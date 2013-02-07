@@ -8,6 +8,10 @@ $(document).ready(function () {
     
     $('#result').html("<p>Submitted!</p>")
 
+    $.get("/tweets/update",function(data){
+      $('#topper').remove();
+      $('#tweets').append(data);
+    }
     var toRepeat = $.get("/tweets/update",function(data){
       $('#topper').remove();
       $('#tweets').append(data);
