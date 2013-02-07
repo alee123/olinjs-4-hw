@@ -8,15 +8,13 @@ $(document).ready(function () {
     
     $('#result').html("<p>Submitted!</p>")
 
-    $.get("/tweets/update",function(data){
-      $('#topper').remove();
-      $('#tweets').append(data);
-    }
-    var toRepeat = $.get("/tweets/update",function(data){
-      $('#topper').remove();
-      $('#tweets').append(data);
-    })    
-    setInterval(toRepeat, 1000);
+    function toRepeat () {
+      $.get("/tweets/update",function(data){
+        $('#topper').remove();
+        $('#tweets').append(data);
+      })
+    }    
+    var timer = setInterval(function(){toRepeat()}, 1000);
     return false;
   })
 
